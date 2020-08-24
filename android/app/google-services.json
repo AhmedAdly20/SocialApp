@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "488121981524",
+    "firebase_url": "https://socialchat-e140b.firebaseio.com",
+    "project_id": "socialchat-e140b",
+    "storage_bucket": "socialchat-e140b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488121981524:android:0a7cfc4c2067a372dbabc1",
+        "android_client_info": {
+          "package_name": "com.example.socialchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488121981524-0a65lv596qskgq19it21m4k253hsn4if.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.socialchat",
+            "certificate_hash": "f5cd95bf6daae4f970541e15d06ed5ba52fd4b5b"
+          }
+        },
+        {
+          "client_id": "488121981524-p3vmc7oo6anqi3lo1fhkhehocearscjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5rCLDHahpDsUvrYDWYu9wV3uqn1etq04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488121981524-p3vmc7oo6anqi3lo1fhkhehocearscjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
