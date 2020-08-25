@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:socialchat/pages/activity_feed.dart';
+import 'package:socialchat/pages/profile.dart';
+import 'package:socialchat/pages/search.dart';
+import 'package:socialchat/pages/timeline.dart';
+import 'package:socialchat/pages/upload.dart';
 
 final googleSignIn = GoogleSignIn();
 
@@ -10,6 +16,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isAuth = false;
+  PageController pageController = PageController();
+  int pageIndex = 0;
 
   void initState() {
     super.initState();
@@ -33,6 +41,11 @@ class _HomeState extends State<Home> {
     }
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
 
   login() {
     googleSignIn.signIn();
@@ -42,9 +55,43 @@ class _HomeState extends State<Home> {
     googleSignIn.signOut();
   }
 
+  onPageChanged(int pageIndex) {
+    setState(() {
+      this.pageIndex = pageIndex;
+    });
+  }
+
+  onTap(int pageIndex) {
+    pageController.animateToPage(pageIndex,
+        duration: Duration(milliseconds: 200), curve: Curves.bounceInOut);
+  }
+
   Widget buildAuthScreen() {
     return Scaffold(
-      appBar: AppBar(),
+      body: PageView(
+        children: [
+          Timeline(),
+          ActivityFeed(),
+          Search(),
+          Upload(),
+          Profile(),
+        ],
+        controller: pageController,
+        onPageChanged: onPageChanged,
+        physics: NeverScrollableScrollPhysics(),
+      ),
+      bottomNavigationBar: CupertinoTabBar(
+        activeColor: Theme.of(context).primaryColor,
+        currentIndex: pageIndex,
+        onTap: onTap,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.whatshot)),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications_none)),
+          BottomNavigationBarItem(icon: Icon(Icons.camera_alt)),
+          BottomNavigationBarItem(icon: Icon(Icons.search)),
+          BottomNavigationBarItem(icon: Icon(Icons.person)),
+        ],
+      ),
     );
   }
 
